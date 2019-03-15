@@ -21,8 +21,9 @@
         <label>Endereço:</label>
         <md-input v-model="endereco"></md-input>
       </md-field>
-      <md-switch v-model="boolean" id="select">Cliente Administrador</md-switch> 
+      <md-switch v-model="admin" id="select">Cliente Administrador</md-switch> 
       <md-button class="md-raised md-primary" click="">Cadastrar</md-button>
+      <md-button class="md-raised md-primary" v-on:click="voltarHome">Voltar</md-button>
     </div>
   </div>
 </template>
@@ -31,6 +32,17 @@
     export default {
     props: {
       msg: String,
+      botoes: false,
+      cadastrar: true
+    },
+
+    methods: {
+      voltarHome() {
+        var botoes = true;
+        var cadastrar = false;
+        this.$emit('voltarBotoes', botoes);
+        this.$emit('voltarCadastro', cadastrar);
+      }
     },
     
     data: () => ({
@@ -39,7 +51,7 @@
       confirmSenha: '',
       selectedDate: new Date(),
       endereco: '',
-      boolean: false
+      admin: false,
     })
   }
 </script>

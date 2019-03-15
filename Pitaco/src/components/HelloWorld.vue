@@ -10,9 +10,9 @@
         <label>Senha:</label>
         <md-input v-model="password" type="password"></md-input>
       </md-field>
-      <md-switch v-model="boolean" id="select">Administrador</md-switch> 
+      <md-switch v-model="admin" id="select">Administrador</md-switch> 
       <md-button class="md-raised md-primary" click="">Entrar</md-button>
-      <md-button class="md-raised md-primary" click="">Voltar</md-button>
+      <md-button class="md-raised md-primary" v-on:click="voltarHome">Voltar</md-button>
     </div>
   </div>
 </template>
@@ -21,12 +21,23 @@
   export default {
     props: {
       msg: String,
+      botoes: false,
+      login: true
+    },
+
+    methods: {
+      voltarHome() {
+        var botoes = true;
+        var login = false;
+        this.$emit('voltarBotoes', botoes);
+        this.$emit('voltarLogin', login);
+      }
     },
     
     data: () => ({
       usuario: null,
       password: '',
-      boolean: false
+      admin: false,
     })
   }
 </script>

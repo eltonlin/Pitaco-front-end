@@ -9,10 +9,10 @@
       
     </div>
     <div v-if="login">
-      <HelloWorld msg="Login"/>
+      <HelloWorld msg="Login" v-on:voltarLogin="login = $event" v-on:voltarBotoes="botoes = $event"/>
     </div>
     <div v-if="cadastrar">
-      <Cadastro msg="Cadastro"/>
+      <Cadastro msg="Cadastro" v-on:voltarCadastro="cadastrar = $event" v-on:voltarBotoes="botoes = $event"/>
     </div>
     
   </div>
