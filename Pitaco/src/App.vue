@@ -23,6 +23,7 @@
   import HelloWorld from './components/HelloWorld.vue'
   import Cadastro from './components/Cadastro.vue'
   import Vue from 'vue'
+  import axios from 'axios'
   import VueMaterial from 'vue-material'
   import 'vue-material/dist/vue-material.min.css'
   Vue.use(VueMaterial)

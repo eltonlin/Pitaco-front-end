@@ -4,31 +4,46 @@
     <div id="form">
       <md-field id="email">
         <label>E-Mail:</label>
-        <md-input v-model="email"></md-input>
+        <md-input v-model="usuario_final.login_final"></md-input>
+      </md-field>
+      <md-field id="nome">
+        <label>Nome:</label>
+        <md-input v-model="usuario_final.nome"></md-input>
+      </md-field>
+      <md-field id="cpf">
+        <label>CPF:</label>
+        <md-input v-model="usuario_final.cpf"></md-input>
+      </md-field>
+      <md-field id="salario">
+        <label>Salario:</label>
+        <md-input v-model="usuario_final.faixa_salarial" type="decimal"></md-input>
       </md-field>
       <md-field id="senha">
         <label>Senha:</label>
-        <md-input v-model="password" type="password"></md-input>
+        <md-input v-model="usuario_final.senha" type="password"></md-input>
       </md-field>
       <md-field id="confirmSenha">
         <label>Confime sua senha:</label>
         <md-input v-model="confirmSenha" type="password"></md-input>
       </md-field>
-      <md-datepicker v-model="selectedDate" md-immediately id="data">
+      <!--md-datepicker v-model="usuario_final.dataNascimento" md-immediately id="data">
         <label>Data de nascimento:</label>
       </md-datepicker>
       <md-field id="endereco">
         <label>Endereço:</label>
-        <md-input v-model="endereco"></md-input>
+        <md-input v-model="usuario_final.endereco"></md-input>
       </md-field>
-      <md-switch v-model="admin" id="select">Cliente Administrador</md-switch> 
-      <md-button class="md-raised md-primary" click="">Cadastrar</md-button>
+      <md-switch-- v-model="usuario_final.admin" id="select">Cliente Administrador</md-switch--> 
+      <md-button class="md-raised md-primary" v-on:click="salvarUsuario">Cadastrar</md-button>
       <md-button class="md-raised md-primary" v-on:click="voltarHome">Voltar</md-button>
     </div>
   </div>
 </template>
 
 <script>
+    import axios from 'axios';
+    import usuarios from '../services/usuarios';
+    
     export default {
     props: {
       msg: String,
@@ -40,22 +55,50 @@
         var cadastrar = false;
         this.$emit('voltarBotoes', botoes);
         this.$emit('voltarCadastro', cadastrar);
-      }
+      },
+      salvarUsuario() {
+        if (this.usuario_final.senha === this.confirmSenha){
+          usuarios.salvar(this.usuario_final).then(resposta => {
+            alert("salvo com sucesso");
+          });
+        } else {
+          alert("Confirme sua senha");
+        }
+        
+      },
     },
     
     data: () => ({
-      email: null,
-      password: '',
       confirmSenha: '',
-      selectedDate: new Date(),
-      endereco: '',
-      admin: false,
-    })
+      usuario_final: {
+        login_final: '',
+        senha: '',
+        nome: '',
+        cpf: '',
+        faixa_salarial: '',
+        //dataNascimento: null,
+      },
+    }),
   }
 </script>
 
 <style scoped>
   #email {
+    color: #2c3e50;
+    padding: 20px;
+    border-bottom: 1px solid #000000;
+  }
+  #nome {
+    color: #2c3e50;
+    padding: 20px;
+    border-bottom: 1px solid #000000;
+  }
+  #cpf {
+    color: #2c3e50;
+    padding: 20px;
+    border-bottom: 1px solid #000000;
+  }
+  #salario {
     color: #2c3e50;
     padding: 20px;
     border-bottom: 1px solid #000000;
