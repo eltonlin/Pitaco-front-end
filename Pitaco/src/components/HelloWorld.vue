@@ -21,8 +21,6 @@
   export default {
     props: {
       msg: String,
-      botoes: false,
-      login: true
     },
 
     methods: {

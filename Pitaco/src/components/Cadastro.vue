@@ -32,8 +32,6 @@
     export default {
     props: {
       msg: String,
-      botoes: false,
-      cadastrar: true
     },
 
     methods: {
