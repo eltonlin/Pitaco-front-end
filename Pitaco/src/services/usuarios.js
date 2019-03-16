@@ -7,7 +7,7 @@ export default	{
     },
 
     login:(body)=>{
-        return http.post('login',body);
+        return http.get('login',body);
     },
     /*
 	atualizar:(usuario)=>{
