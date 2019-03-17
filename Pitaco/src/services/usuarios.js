@@ -3,11 +3,11 @@ import { http } from './config'
 export default	{
 
 	salvar:(usuario)=>{
-		return http.post('usuario_final',usuario);
+		return http.post('/usuario_final',JSON.stringify(usuario));
     },
 
     login:(body)=>{
-        return http.get('login',body);
+        return http.get('/login',JSON.stringify(body));
     },
     /*
 	atualizar:(usuario)=>{

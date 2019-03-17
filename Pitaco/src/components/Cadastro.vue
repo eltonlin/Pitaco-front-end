@@ -41,8 +41,9 @@
 </template>
 
 <script>
+    const API_URL = 'http://localhost:3000';
     import axios from 'axios';
-    import usuarios from '../services/usuarios';
+    //import usuarios from '../services/usuarios';
     
     export default {
     props: {
@@ -57,6 +58,12 @@
         this.$emit('voltarCadastro', cadastrar);
       },
       salvarUsuario() {
+        //const url = `${API_URL}/usuario_final`;
+
+        return axios.post(`http://localhost:3000/usuario_final`,JSON.stringify(this.usuario_final));
+        
+
+        /*
         if (this.usuario_final.senha === this.confirmSenha){
           usuarios.salvar(this.usuario_final).then(resposta => {
             alert("salvo com sucesso");
@@ -64,21 +71,21 @@
         } else {
           alert("Confirme sua senha");
         }
-        
+        */
       },
     },
     
     data: () => ({
       confirmSenha: '',
       usuario_final: {
-        login_final: '',
-        senha: '',
-        nome: '',
-        cpf: '',
-        faixa_salarial: '',
-        //dataNascimento: null,
-      },
-    }),
+          login_final: '',
+          senha: '',
+          nome: '',
+          cpf: '',
+          faixa_salarial: '',
+          pontuacao: '12'
+      }
+    })
   }
 </script>
 

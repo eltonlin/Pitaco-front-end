@@ -33,13 +33,26 @@
         this.$emit('voltarLogin', login);
       },
       login() {
+
+        axios.post(` login`, {
+          body: this.body
+        })
+        .then(response => {
+          if(response === 200){
+            alert("logado com sucesso");
+          } else {
+            alert("A conta não existe");
+          }
+        })
+
+        /*
         usuarios.login(this.body).then(resposta => {
           if (resposta === 200){
             alert("logado com sucesso");
           } else {
             alert("A conta não existe");
           }
-        });
+        });*/
         
       },
     },
