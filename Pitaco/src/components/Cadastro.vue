@@ -4,7 +4,7 @@
     <div id="form">
       <md-field id="email">
         <label>E-Mail:</label>
-        <md-input v-model="usuario_final.login_final"></md-input>
+        <md-input v-model="usuario_final.login_usuario"></md-input>
       </md-field>
       <md-field id="nome">
         <label>Nome:</label>
@@ -58,9 +58,8 @@
         this.$emit('voltarCadastro', cadastrar);
       },
       salvarUsuario() {
-        //const url = `${API_URL}/usuario_final`;
-
-        return axios.post(`http://localhost:3000/usuario_final`,JSON.stringify(this.usuario_final));
+        const url = `${API_URL}/usuario_final/login`;
+        return axios.post(url,JSON.stringify(this.usuario_final));
         
 
         /*
@@ -78,12 +77,13 @@
     data: () => ({
       confirmSenha: '',
       usuario_final: {
-          login_final: '',
-          senha: '',
-          nome: '',
-          cpf: '',
-          faixa_salarial: '',
-          pontuacao: '12'
+        login_usuario: '',
+        senha: '',
+        nome: '',
+        cpf: '',
+        faixa_salarial: '',
+        data_nascimento: '02-02-1999',
+        pontuacao: '12'      
       }
     })
   }
