@@ -59,8 +59,25 @@
       },
       salvarUsuario() {
         const url = `${API_URL}/usuario_final/login`;
-        return axios.post(url,JSON.stringify(this.usuario_final));
-        
+
+//        let headers = {
+  //        headers: {
+    //        'Content-Type': 'application/json-rpc'
+      //    }
+        //}
+        //return Promise.resolve().then() {
+          //return axios.post(url,this.usuario_final, headers).then();
+        //}
+
+        let headers = {
+          headers: {
+            'Content-Type': 'application/json-rpc'
+          }
+        }
+        return Promise.resolve()
+          .then(function () {
+            return axios.post(url,this.usuario_final, headers).then()
+        })
 
         /*
         if (this.usuario_final.senha === this.confirmSenha){
